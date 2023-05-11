@@ -8,6 +8,7 @@ if __name__ == "__main__":
 
     if args < 3:
         print("Usage: {} <a> <operator> <b>".format(args1))
+        sys.exit(1)
     else:
         a = int(sys.argv[1])
         operator = sys.argv[2]
@@ -23,3 +24,4 @@ if __name__ == "__main__":
             print("{} / {} = {}".format(a, b, div(a, b)))
         else:
             print("Unknown operator. Available operators: +, -, * and /")
+            sys.exit(1)
