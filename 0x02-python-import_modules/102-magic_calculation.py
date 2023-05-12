@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 from magic_calculation_102 import add, sub
-
-b = ('add', 'sub')
+a = 0
 c = 0
-
 if a < b:
     c = add(a, b)
     for i in range(4, 6):
