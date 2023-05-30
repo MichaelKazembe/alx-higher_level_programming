@@ -3,6 +3,4 @@
 class Square:
     """ empty class Square """
     pass
-    """
-    creates a square class object
-    """
+    """ class Square object """
