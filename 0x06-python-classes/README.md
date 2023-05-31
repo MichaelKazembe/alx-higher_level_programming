@@ -1,10 +1,5 @@
 ## 0x06. Python - Classes and Objects
 
-**What you should learn from this project**
-
-       At the end of this project you are expected to be able to
-       explain to anyone, without the help of Google:
-
 * Why Python programming is awesome (don’t forget to tweet today,
   with the hashtag #pythoniscool :))
 * “first-class everything”
