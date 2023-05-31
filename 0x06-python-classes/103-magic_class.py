@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+import math class magic class
+"""
 import math
 """ Create class"""
 
