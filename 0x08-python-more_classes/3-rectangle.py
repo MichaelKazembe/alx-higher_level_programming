@@ -49,7 +49,7 @@ class Rectangle:
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
-    """Return a modified string representation of the object."""
+        """Return a modified string representation of the object."""
         if not self.perimeter():
             return ""
-    return '\n'.join('#' * self.width for _ in range(self.height))
+        return '\n'.join('#' * self.width for _ in range(self.height))
