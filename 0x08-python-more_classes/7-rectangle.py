@@ -5,7 +5,7 @@
 class Rectangle:
     """ class Rectangle """
     number_of_instances = 0
-    print_symbol = '#'
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """ Initialize the Rectangle object """
@@ -55,7 +55,8 @@ class Rectangle:
         """ Return a modified string representation of the object """
         if not self.perimeter():
             return ""
-        return '\n'.join('#' * self.width for _ in range(self.height))
+        hashtags = "{}".format(self.print_symbol) * self.width
+        return '\n'.join(hashtags for _ in range(self.height))
 
     def __repr__(self):
         """ Return a string representation of the object """
