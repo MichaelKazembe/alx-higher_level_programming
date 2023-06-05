@@ -1,4 +1,4 @@
-# Python - Hello, World
+# 0x00-Python - Hello, World
 
 In this project, we start using the interpreter, printing text
 and variables, as well as indexing and slicing strings in Python.
