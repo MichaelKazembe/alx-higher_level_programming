@@ -3,72 +3,85 @@
 import sys
 
 
-def nQueens(n):
+def n_queens(size):
     """
     Solve the N Queens problem and print every possible solution.
-    
+
+    Args:
+        size (int): The number of queens and size of the chessboard.
+
+    Returns:
+        None
     """
 
-    queens = [0] * n
-    s = n
+    queens = [0] * size
+    s = size
 
     while True:
-        while n > 1:
-            if valid(queens, n):
-                n -= 1
+        while size > 1:
+            if valid(queens, size):
+                size -= 1
             else:
-                queens[n] += 1
-                if queens[n] >= s:
-                    queens[n] = 0
-                    queens[n + 1] += 1
+                queens[size] += 1
+                if queens[size] >= s:
+                    queens[size] = 0
+                    queens[size + 1] += 1
 
         print("Solution:")
         print(queens)
 
         queens[0] += 1
-        n = 0
+        size = 0
 
-    def valid(queens, n):
+    def valid(queens, size):
         """
         Check if the current queen placement is valid.
-        
+
+        Args:
+            queens (list): List representing the current queen placements.
+            size (int): The index of the current queen being checked.
+
+        Returns:
+            bool: True if the queen placement is valid, False otherwise.
         """
-        i = n + 1
+        i = size + 1
         while i < s:
-            if queens[i] == queens[n]:
+            if queens[i] == queens[size]:
                 return False
             i += 1
 
-        i = n + 1
+        i = size + 1
         x = 1
         while i < s:
-            if queens[i] == queens[n] - x:
+            if queens[i] == queens[size] - x:
                 return False
             i += 1
             x += 1
 
-        i = n + 1
+        i = size + 1
         x = 1
         while i < s:
-            if queens[i] == queens[n] + x:
+            if queens[i] == queens[size] + x:
                 return False
             i += 1
             x += 1
 
         return True
 
+
+if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
 
     try:
-        n = int(sys.argv[1])
+        size = int(sys.argv[1])
     except (ValueError, TypeError):
         print("N must be a number")
         sys.exit(1)
 
-    if n < 4:
+    if size < 4:
         print("N must be at least 4")
         sys.exit(1)
 
-    nQueens(n)
+    n_queens(size)
