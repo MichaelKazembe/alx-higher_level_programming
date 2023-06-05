@@ -4,6 +4,7 @@
 
 import sys
 
+
 def nQueens(n):
     """
     Solve the N Queens problem and print every possible solution.
