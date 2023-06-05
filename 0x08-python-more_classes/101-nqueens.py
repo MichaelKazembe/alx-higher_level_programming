@@ -2,13 +2,19 @@
 
 import sys
 
-
 def nQueens(n):
     """
-    Solves the N Queens problem and print every possible solution.
+    Solve the N Queens problem and print every possible solution.
+
+    Args:
+        n (int): The number of queens and size of the chessboard.
+
+    Returns:
+        None
     """
 
     queens = [0] * n
+    print(queens)
     s = n
 
     while True:
@@ -29,7 +35,14 @@ def nQueens(n):
 
     def valid(queens, n):
         """
-        Checks if the current queen placement is valid.
+        Check if the current queen placement is valid.
+
+        Args:
+            queens (list): List representing the current queen placements.
+            n (int): The index of the current queen being checked.
+
+        Returns:
+            bool: True if the queen placement is valid, False otherwise.
         """
         i = n + 1
         while i < s:
@@ -54,6 +67,7 @@ def nQueens(n):
             x += 1
 
         return True
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
