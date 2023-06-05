@@ -6,7 +6,6 @@ import sys
 def nQueens(n):
     """
     Solves the N Queens problem and print every possible solution.
-    
     """
 
     queens = [0] * n
@@ -55,7 +54,6 @@ def nQueens(n):
             x += 1
 
         return True
-
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
