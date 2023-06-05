@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" Create Queens"""
+
 
 import sys
 
