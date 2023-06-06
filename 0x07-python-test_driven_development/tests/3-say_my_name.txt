@@ -1,0 +1,56 @@
+The ``say_my_name`` function
+============================
+
+This function prints "My name is <first name> <last name>".
+
+Prototype:
+----------
+    def say_my_name(first_name, last_name=""):
+
+Parameters:
+-----------
+first_name : str
+    The first name.
+last_name : str, optional
+    The last name (default is an empty string).
+
+Raises:
+-------
+TypeError
+    If first_name is not a string or last_name is not a string.
+
+Importing the function from the module:
+---------------------------------------
+    >>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Checks module docstring:
+------------------------
+    >>> docstr = __import__("3-say_my_name").__doc__
+    >>> len(docstr) > 1
+    True
+
+Checks for function docstring:
+-----------------------------
+    >>> funct = __import__("3-say_my_name").say_my_name.__doc__
+    >>> len(funct) > 1
+    True
+
+
+Examples:
+---------
+
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+>>> say_my_name("Jane")
+My name is Jane
+
+>>> say_my_name(123, "Smith")
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+>>> say_my_name("Alice", 456)
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string

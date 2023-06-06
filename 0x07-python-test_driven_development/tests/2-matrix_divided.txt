@@ -1,0 +1,73 @@
+The ``2-matrix_divided`` module
+===============================
+
+Using ``matrix_divided``
+------------------------
+
+This module defines a function ``matrix_divided(matrix, div)`` that divides all elements of a matrix by a given number.
+
+Parameters:
+-----------
+matrix : list of lists
+    The matrix to be divided. Each element of the matrix should be an integer or float.
+div : int or float
+    The number to divide the matrix elements by.
+
+Returns:
+--------
+list of lists
+    A new matrix where all elements are divided by the given number, rounded to 2 decimal places.
+
+Raises:
+-------
+TypeError
+    - If the `matrix` parameter is not a matrix (list of lists) of integers/floats.
+    - If each row of the matrix does not have the same size.
+    - If the `div` parameter is not a number (integer or float).
+ZeroDivisionError
+    If `div` is equal to 0.
+
+Importing the function from the module:
+---------------------------------------
+    >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+Checks module docstring:
+------------------------
+    >>> docstr = __import__("2-matrix_divided").__doc__
+    >>> len(docstr) > 1
+    True
+
+Checks for function docstring:
+    >>> funct = __import__("2-matrix_divided").matrix_divided.__doc__
+    >>> len(funct) > 1
+    True
+
+Examples:
+---------
+Here are some examples illustrating the usage of the ``matrix_divided`` function:
+
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 2)
+[[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
+Traceback (most recent call last):
+    ...
+ZeroDivisionError: division by zero
+
+>>> matrix_divided([[1, 2], [3, 4], [5, 6]], 3)
+[[0.33, 0.67], [1.0, 1.33], [1.67, 2.0]]
+
+>>> matrix_divided([[1, 2], [3, '4']], 2)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided([[1, 2], [3, 4, 5]], 2)
+Traceback (most recent call last):
+    ...
+TypeError: Each row of the matrix must have the same size
+
+>>> matrix_divided([[1, 2], [3, 4]], 'divisor')
+Traceback (most recent call last):
+    ...
+TypeError: div must be a number
