@@ -1,85 +1,91 @@
-import doctest
+The ``0-add_integer`` module
+============================
 
-def add_integer(a, b=98):
-    """
-    Add two integers.
+Using ``add_integer``
+---------------------
 
-    Args:
-        a (int or float): First integer or float.
-        b (int or float, optional): Second integer or float. Defaults to 98.
+This module defines an integer addition function ``add_integer(a, b=98)``.
 
-    Returns:
-        int: The sum of a and b.
+-------------------------------------------------------------------------
 
-    Raises:
-        TypeError: If a or b is not an integer or float.
+Importing the function from the module:
+    >>> add_integer = __import__("0-add_integer").add_integer
 
-    Examples:
-        >>> add_integer(3, 5)
-        8
+Checks module docstring:
+    >>> docstr = __import__("0-add_integer").__doc__
+    >>> len(docstr) > 1
+    True
 
-        >>> add_integer(3.2, 8.5)
-        11
+Checks for function docstring:
+    >>> funct = __import__("0-add_integer").add_integer.__doc__
+    >>> len(funct) > 1
+    True
 
-        >>> add_integer(-5, -5)
-        -10
+Examples:
+---------
 
-        >>> add_integer(-5.8, -11.5)
-        -17
+>>> add_integer(3, 5)
+8
 
-        >>> add_integer(-3, 5)
-        2
+>>> add_integer(3.2, 8.5)
+11
 
-        >>> add_integer(3, -5)
-        -2
+>>> add_integer(-5, -5)
+-10
 
-        >>> add_integer(-3.9, 5.6)
-        1
+>>> add_integer(-5.8, -11.5)
+-16
 
-        >>> add_integer(3.7, -5.3)
-        -1
+>>> add_integer(-3, 5)
+2
 
-        >>> add_integer(-10, 6)
-        -4
+>>> add_integer(3, -5)
+-2
 
-        >>> add_integer(7, -5)
-        2
+>>> add_integer(-3.9, 5.6)
+2
 
-        >>> add_integer(17892809999999999999990990999999999, 97)
-        17892809999999999999990991000000096
+>>> add_integer(3.7, -5.3)
+-2
 
-        >>> add_integer(1789280935652464269.67535355, 1)
-        1789280935652464270
+>>> add_integer(-10, 6)
+-4
 
-        >>> add_integer(0.0, 0.0)
-        0
+>>> add_integer(7, -5)
+2
 
-        >>> add_integer(0, 0)
-        0
+>>> add_integer(17892809999999999999990990999999999, 97)
+17892809999999999999990991000000096
 
-        >>> add_integer(6)
-        104
+>>> add_integer(1789280935652464269.67535355, 1)
+1789280935652464385
 
-        >>> add_integer(61, )
-        159
+>>> add_integer(0.0, 0.0)
+0
 
-        >>> add_integer(-17.5, )
-        80
+>>> add_integer(0, 0)
+0
 
-        >>> add_integer()
-        Traceback (most recent call last):
-        ...
-        TypeError: add_integer() missing 1 required positional argument: 'a'
+>>> add_integer(6)
+104
 
-        >>> add_integer(4, 5, -9)
-        Traceback (most recent call last):
-        ...
-        TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+>>> add_integer(61, )
+159
 
-        >>> add_integer(4, "goal")
-        Traceback (most recent call last):
-        ...
-        TypeError: a must be an integer or b must be an integer
+>>> add_integer(-17.5, )
+81
 
-if __name__ == "__main__":
-    doctest.testmod()
+>>> add_integer()
+Traceback (most recent call last):
+    ...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+>>> add_integer(4, 5, -9)
+Traceback (most recent call last):
+    ...
+TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+>>> add_integer(4, "goal")
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer or b must be an integer
