@@ -26,12 +26,20 @@ Examples:
 ---------
 
 >>> text_indentation("Hello. World?")
-Hello.
-<BLANKLINE>
-World?
+Hello.\n\nWorld?
 
 >>> text_indentation("This is a test")
 This is a test
 
 >>> text_indentation("")
-<BLANKLINE>
+
+
+>>> text_indentation(6)
+Traceback (most recent call last):
+	...
+TypeError: text must be a string
+
+>>> text_indentation()
+Traceback (most recent call last):
+	...
+TypeError: text must be a string
