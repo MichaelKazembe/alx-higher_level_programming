@@ -25,13 +25,13 @@ Importing the function from the module:
 
 Checks module docstring:
 ------------------------
-    >>> docstr = say_my_name.__doc__
+    >>> docstr = __import__("3-say_my_name").__doc__
     >>> len(docstr) > 1
     True
 
 Checks for function docstring:
 -----------------------------
-    >>> funct = say_my_name.__doc__
+    >>> funct = __import__("3-say_my_name").say_my_name.__doc__
     >>> len(funct) > 1
     True
 
