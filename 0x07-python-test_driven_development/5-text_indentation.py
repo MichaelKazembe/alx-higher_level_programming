@@ -19,7 +19,7 @@ def text_indentation(text):
     Returns:
         None
     """
-   if not isinstance(text, str):
+    if not isinstance(text, str):
         raise TypeError("text must be a string")
 
     new_text = ""
@@ -27,8 +27,8 @@ def text_indentation(text):
     for char in text:
         new_text += char
         if char in punctuation_chars:
-           new_text += "\n\n"
+            new_text += "\n\n"
 
     lines = new_text.splitlines()
     stripped_lines = [line.strip() for line in lines]
-    print('\n'.join(stripped_lines)
+    print('\n'.join(stripped_lines))
