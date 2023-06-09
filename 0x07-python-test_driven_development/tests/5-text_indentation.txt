@@ -1,0 +1,50 @@
+The ``5-text_indentation`` module
+=================================
+
+Using ``text_indentation``
+--------------------------
+
+This module defines a function ``text_indentation(text)`` that prints a text with 2 new lines after each '.', '?', and ':' character.
+
+Importing the function from the module:
+--------------------------------------
+    >>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Checks module docstring:
+------------------------
+    >>> docstr = __import__("5-text_indentation").__doc__
+    >>> len(docstr) > 1
+    True
+
+Checks for function docstring:
+------------------------------
+    >>> funct = __import__("5-text_indentation").text_indentation.__doc__
+    >>> len(funct) > 1
+    True
+
+Examples:
+---------
+
+
+>>> text_indentation("Hello. World?")
+Hello.
+<BLANKLINE>
+World?
+<BLANKLINE>
+
+>>> text_indentation("This is a test")
+This is a test
+
+>>> text_indentation("")
+<BLANKLINE>
+
+>>> text_indentation(6)
+Traceback (most recent call last):
+        ...
+TypeError: text must be a string
+
+>>> text_indentation()
+Traceback (most recent call last):
+        ...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
