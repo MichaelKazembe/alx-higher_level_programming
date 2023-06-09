@@ -10,7 +10,7 @@ Prototype:
 Parameters:
 -----------
 first_name : str
-    The first name.
+    The first name..
 last_name : str, optional
     The last name (default is an empty string).
 
