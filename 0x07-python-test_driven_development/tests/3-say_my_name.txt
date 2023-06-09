@@ -41,8 +41,8 @@ Examples:
 >>> say_my_name("John", "Doe")
 "My name is John Doe"
 
->>> say_my_name("Jane")
-"My name is Jane"
+>>> say_my_name("Michael")
+"My name is Michael"
 
 >>> say_my_name(123, "Smith")
 Traceback (most recent call last):
