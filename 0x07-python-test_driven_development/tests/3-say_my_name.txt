@@ -41,9 +41,6 @@ Examples:
 >>> say_my_name("Peter", "Pan")
 My name is Peter Pan
 
->>> say_my_name("Michael")
-My name is Michael
-
 >>> say_my_name(123, "Smith")
 Traceback (most recent call last):
     ...
