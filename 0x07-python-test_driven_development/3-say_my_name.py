@@ -18,10 +18,10 @@ def say_my_name(first_name, last_name=""):
         TypeError: If first_name is not a string or last_name is not a string.
 
     Examples:
-        >>> say_my_name("Peter", "Pan
+        >>> say_my_name("Peter", "Pan")
         My name is John Doe
 
-        >>> say_my_name("Michael
+        >>> say_my_name("Michael")
         My name is Michael
 
         >>> say_my_name(123, "Smith")
