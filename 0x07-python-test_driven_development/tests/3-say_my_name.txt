@@ -37,6 +37,7 @@ Checks for function docstring:
 
 Examples:
 ---------
+
 >>> say_my_name("Michael")
 My name is Michael
 
