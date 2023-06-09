@@ -1,45 +1,34 @@
-The ``5-text_indentation`` module
-=================================
+#!/usr/bin/env python3
 
-Using ``text_indentation``
---------------------------
+"""
 
-This module defines a function ``text_indentation(text)`` that prints a text with 2 new lines after each '.', '?', and ':' character.
+This module defines a function `text_indentation(text)`
+that prints a text with 2 new lines after each '.', '?',
+and ':' character.
 
-Importing the function from the module:
---------------------------------------
-    >>> text_indentation = __import__("5-text_indentation").text_indentation
-
-Checks module docstring:
-------------------------
-    >>> docstr = __import__("5-text_indentation").__doc__
-    >>> len(docstr) > 1
-    True
-
-Checks for function docstring:
-------------------------------
-    >>> funct = __import__("5-text_indentation").text_indentation.__doc__
-    >>> len(funct) > 1
-    True
-
-Examples:
----------
-
->>> text_indentation("Hello. World?")
-Hello.\n\nWorld?
-
->>> text_indentation("This is a test")
-This is a test
-
->>> text_indentation("")
+"""
 
 
->>> text_indentation(6)
-Traceback (most recent call last):
-	...
-TypeError: text must be a string
+def text_indentation(text):
+    """
+    Prints the text with 2 new lines after each '.', '?', and ':' character.
 
->>> text_indentation()
-Traceback (most recent call last):
-	...
-TypeError: text must be a string
+    Args:
+        text (str): The input text.
+
+    Returns:
+        None
+    """
+   if not isinstance(text, str):
+        raise TypeError("text must be a string")
+
+    new_text = ""
+    punctuation_chars = ['.', '?', ':']
+    for char in text:
+        new_text += char
+        if char in punctuation_chars:
+           new_text += "\n\n"
+
+    lines = new_text.splitlines()
+    stripped_lines = [line.strip() for line in lines]
+    print('\n'.join(stripped_lines)
