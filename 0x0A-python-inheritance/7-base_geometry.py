@@ -5,10 +5,15 @@ Creates class BaseGeometry
 
 
 class BaseGeometry():
-    """ class BaseGeometry """
+    """instance of class BaseGeometry"""
+    def __init__(self):
+        """initialize class"""
+        pass
+
     def area(self):
         """ Public instance method area"""
         raise Exception("area() is not implemented")
+
     def integer_validator(self, name, value):
         """ Public instance method area """
         if not isinstance(value, int):
