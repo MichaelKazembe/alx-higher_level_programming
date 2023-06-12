@@ -6,10 +6,6 @@ Creates class BaseGeometry
 
 class BaseGeometry():
     """instance of class BaseGeometry"""
-    def __init__(self):
-        """initialize class BaseGeometry"""
-        pass
-
     def area(self):
         """ Public instance method area"""
         raise Exception("area() is not implemented")
