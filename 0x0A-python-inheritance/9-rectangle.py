@@ -31,6 +31,13 @@ class Rectangle(BaseGeometry):
         """ Initialize subclass Rectangle"""
         if not super().integer_validator("width", width):
             self.__width = width
-
         if not super().integer_validator("height", height):
             self.__height = height
+
+    def area(self):
+        """ Return Area of Rectangle """
+        return (self.__width * self.__height)
+
+    def __str__(self):
+        """ Returns string of a rectangle """
+        return("[Rectangle] {}/{}".format(self.__width, self.__height))
