@@ -10,7 +10,7 @@ otherwise False.
 
 def is_kind_of_class(obj, a_class):
     """ function is_kind_of_class """
-    if isinstance(obj, a_class):
+    if type(obj) == a_class or isinstance(obj, a_class):
         return True
     else:
         False
