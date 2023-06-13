@@ -11,5 +11,5 @@ characters added:
 def append_write(filename="", text=""):
     """function append_write"""
     with open(filename, "a", encoding="UTF-8") as file:
-        file.write("\n" + text)
+        file.write(text)
         return len(text)
