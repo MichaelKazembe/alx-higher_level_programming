@@ -85,6 +85,16 @@ class Rectangle(Base):
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
 
+    def __str__(self):
+        """ String representation of the rectangle object """
+        return "[Rectangle] {} {}/{} - {}/{}".format(
+            self.id,
+            self.x,
+            self.y,
+            self.width,
+            self.height
+        )
+
     def update(self, *args, **kwargs):
         """ Public method to update attributes of the rectangle """
         if args:
@@ -101,13 +111,3 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
-
-    def __str__(self):
-        """ String representation of the rectangle object """
-        return "[Rectangle] {} {}/{} - {}/{}".format(
-            self.id,
-            self.x,
-            self.y,
-            self.width,
-            self.height
-        )
