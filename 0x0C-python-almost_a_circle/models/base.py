@@ -97,7 +97,6 @@ class Base:
     def save_to_file(cls, list_objs):
         """ Save instances to file as JSON """
         filename = "{}.csv".format(cls.__name__)
-        
         with open(filename, "w") as file:
             if list_objs is None or len(list_objs) == 0:
                 file.write("[]")
@@ -115,7 +114,6 @@ class Base:
             names = ['size', 'x', 'y', 'id']
 
         filename = "{}.csv".format(cls.__name__)
-        
         with open(filename, 'w', newline='') as f:
             if list_objs:
                 writer = csv.DictWriter(f, fieldnames=names)
