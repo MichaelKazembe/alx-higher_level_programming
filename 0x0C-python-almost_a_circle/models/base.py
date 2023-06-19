@@ -1,6 +1,7 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """ base.py """
 
+import os
 import json
 
 
@@ -18,25 +19,12 @@ class Base:
             self.id = Base.__nb_objects
 
     @staticmethod
-    def to_json_string(list_dictionaries: object) -> object:
+    def to_json_string(list_dictionaries):
         """ Convert list of dictionaries to JSON string """
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
-
-    @classmethod
-    def save_to_file(cls, list_objs):
-        """ Save JSON string representation of list_objs to a file """
-        if list_objs is None:
-            list_objs = []
-
-        filename = cls.__name__ + ".json"
-        json_string = cls.to_json_string([obj.to_dictionary()
-                                          for obj in list_objs])
-
-        with open(filename, 'w') as file:
-            file.write(json_string)
 
     @staticmethod
     def from_json_string(json_string):
@@ -57,3 +45,16 @@ class Base:
             dummy_instance = cls()
         dummy_instance.update(**dictionary)
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """ Load instances from file """
+        filename = cls.__name__ + ".json"
+        if not os.path.exists(filename):
+            return []
+        with open(filename, "r") as file:
+            json_string = file.read()
+            dictionaries = cls.from_json_string(json_string)
+            instances = [cls.create(**dictionary)
+                    for dictionary in dictionaries]
+            return instances
