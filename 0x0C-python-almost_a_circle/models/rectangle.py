@@ -104,10 +104,10 @@ class Rectangle(Base):
 
     def __str__(self):
         """ String representation of the rectangle object """
-        return "[Rectangle] {id} {x}/{y} - {width}/{height}".format(
-            id=self.id,
-            x=self.x,
-            y=self.y,
-            width=self.width,
-            height=self.height
+        return "[Rectangle] {} {}/{} - {}/{}".format(
+            self.id,
+            self.x,
+            self.y,
+            self.width,
+            self.height
         )
