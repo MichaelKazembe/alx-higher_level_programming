@@ -96,7 +96,8 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """ Save instances to file as JSON """
-        filename = cls.__name__ + ".json"
+        filename = "{}.csv".format(cls.__name__)
+        
         with open(filename, "w") as file:
             if list_objs is None or len(list_objs) == 0:
                 file.write("[]")
@@ -113,8 +114,8 @@ class Base:
         else:
             names = ['size', 'x', 'y', 'id']
 
-        filename = cls.__name__ + ".csv"
-
+        filename = "{}.csv".format(cls.__name__)
+        
         with open(filename, 'w', newline='') as f:
             if list_objs:
                 writer = csv.DictWriter(f, fieldnames=names)
@@ -128,7 +129,7 @@ class Base:
         def load_from_file_csv(cls):
             """ Load instances from CSV file """
             mylist = []
-            filename = cls.__name__ + ".csv"
+            filename = "{}.csv".format(cls.__name__)
             try:
                 with open(filename, 'r') as f:
                     reader = csv.DictReader(f)
