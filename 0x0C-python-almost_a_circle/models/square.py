@@ -31,7 +31,6 @@ class Square(Rectangle):
             self.width
         )
 
-
     def update(self, *args, **kwargs):
         """ Public method to update attributes of the rectangle """
         if args:
