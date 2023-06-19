@@ -108,22 +108,37 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """ Load instances from CSV file """
+        mylist = []
         filename = cls.__name__ + ".csv"
-        if not os.path.exists(filename):
-            return []
-
-    ...
+        try:
+            with open(filename, 'r') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    for key, value in row.items():
+                        row[key] = int(value)
+                    my_list.append(row)
+            return ([cls.create(**x) for x in mylist])
+        except FileNotFoundError:
+            return ([[]])
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """ Save instances to file as CSV """
+        if cls.__name__ is "Rectangle":
+            names = ['width', 'height', 'x', 'y', 'id']
+        else:
+            names = ['size', 'x', 'y', 'id']
+
         filename = cls.__name__ + ".csv"
-        with open(filename, "w") as file:
-            if list_objs is None or len(list_objs) == 0:
-                file.write("")
+
+        with open(filename, 'w', newline='') as f:
+            if list_objs:
+                writer = csv.DictWriter(f, fieldnames=names)
+                writer.writeheader()
+                for x in list_objs:
+                    writer.writerow(x.to_dictionary())
             else:
-                csv_string = cls.to_csv_string(list_objs)
-                file.write(csv_string)
+                writer.writerow([[]])
 
         @staticmethod
         def draw(list_rectangles, list_squares):
