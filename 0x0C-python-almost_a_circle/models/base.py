@@ -1,14 +1,26 @@
 #!usr/bin/python3
 """ base.pyClass """
 
+import json
+
 
 class Base:
-    """ class Base for Almost a circle project """
+    """ Base class for managing id attribute """
+
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """ Class constructor """
         if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """ Convert list of dictionaries to JSON string """
+        if list_dictionaries is None or len(list_dictionaries) == 0:
+            return "[]"
+        else:
+            return json.dumps(list_dictionaries)
