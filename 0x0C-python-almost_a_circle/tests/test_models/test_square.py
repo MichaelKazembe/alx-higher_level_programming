@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-"""Unittest for square([..])
-"""
+""" test_square Unittest """
 
 import unittest
 from io import StringIO
@@ -21,28 +20,26 @@ class TestSquare(unittest.TestCase):
         self.assertIsNotNone(to_dictionary.__doc__)
 
     def test_style_square(self):
-        """
-        Tests for pep8
-        """
+        """ Tests for pep8 """
         style = pep8.StyleGuide(quiet=True)
-        p = style.check_files(['tests/test_models/test_square.py'])
-        self.assertEqual(p.total_errors, 0, "fix pep8")
-        p = style.check_files(['models/square.py'])
-        self.assertEqual(p.total_errors, 0, "fix pep8")
+        pp = style.check_files(['tests/test_models/test_square.py'])
+        self.assertEqual(pp.total_errors, 0, "fix pep8")
+        pp = style.check_files(['models/square.py'])
+        self.assertEqual(pp.total_errors, 0, "fix pep8")
 
     @classmethod
     def setUpClass(cls):
         Base._Base__nb_objects == 0
-        cls.s1 = Square(2, 2)
-        cls.s2 = Square(size=4, x=2, y=3)
+        cls.sq1 = Square(2, 2)
+        cls.sq2 = Square(size=4, x=2, y=3)
 
     def test_id(self):
-        self.assertTrue(self.s1.id, 1)
-        self.assertTrue(self.s2.id, 2)
+        self.assertTrue(self.sq1.id, 1)
+        self.assertTrue(self.sq2.id, 2)
 
     def test_area(self):
-        self.assertTrue(self.s1.area(), 4)
-        self.assertTrue(self.s2.area(), 16)
+        self.assertTrue(self.sq1.area(), 4)
+        self.assertTrue(self.sq2.area(), 16)
 
     def test_attr_square(self):
         with self.assertRaises(TypeError):
@@ -55,41 +52,41 @@ class TestSquare(unittest.TestCase):
             Square(size=1, y='A')
 
     def test_str(self):
-        self.assertEqual(str(self.s1), '[Square] (3) 2/0 - 2')
-        self.assertEqual(str(self.s2), '[Square] (4) 2/3 - 4')
+        self.assertEqual(str(self.sq1), '[Square] (1) 2/0 - 2')
+        self.assertEqual(str(self.sq2), '[Square] (2) 2/3 - 4')
 
     def test_update(self):
-        tmp = Square(5)
-        tmp.update(10)
-        self.assertEqual(str(tmp), '[Square] (10) 0/0 - 5')
-        tmp.update(1, 2)
-        self.assertEqual(str(tmp), '[Square] (1) 0/0 - 2')
-        tmp.update(1, 2, 3)
-        self.assertEqual(str(tmp), '[Square] (1) 3/0 - 2')
+        temp = Square(5)
+        temp.update(10)
+        self.assertEqual(str(temp), '[Square] (10) 0/0 - 5')
+        temp.update(1, 2)
+        self.assertEqual(str(temp), '[Square] (1) 0/0 - 2')
+        temp.update(1, 2, 3)
+        self.assertEqual(str(temp), '[Square] (1) 3/0 - 2')
 
     def test_display(self):
         Base._Base__nb_objects = 0
         old_stdout = sys.stdout
         sys.stdout = mystdout = StringIO()
-        r1 = Square(4)
-        r1.display()
+        rec1 = Square(4)
+        rec1.display()
         sys.stdout = old_stdout
         self.assertEqual(mystdout.getvalue(), "####\n####\n####\n####\n")
         sys.stdout = mystdout = StringIO()
-        r1 = Rectangle(2, 2, 2, 2)
-        r1.display()
+        rec1 = Rectangle(2, 2, 2, 2)
+        rec1.display()
         self.assertEqual(mystdout.getvalue(), "\n\n  ##\n  ##\n")
         sys.stdout = old_stdout
 
     def test_dictionary(self):
         Base._Base__nb_objects = 0
-        r1 = Square(2, 2, 2, 2)
-        r1_dictionary = r1.to_dictionary()
-        self.assertDictEqual(r1_dictionary, {
+        rec1 = Square(2, 2, 2, 2)
+        rec1_dictionary = rec1.to_dictionary()
+        self.assertDictEqual(rec1_dictionary, {
             'x': 2, 'y': 2, 'size': 2, 'id': 2})
-        r1 = Rectangle(1, 1)
-        r1_dictionary = r1.to_dictionary()
-        self.assertDictEqual(r1_dictionary, {
+        rec1 = Rectangle(1, 1)
+        rec1_dictionary = rec1.to_dictionary()
+        self.assertDictEqual(rec1_dictionary, {
             'x': 0, 'y': 0, 'width': 1, 'height': 1, 'id': 1})
 
 if __name__ == '__main__':
