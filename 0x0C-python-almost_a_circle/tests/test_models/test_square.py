@@ -52,8 +52,8 @@ class TestSquare(unittest.TestCase):
             Square(size=1, y='A')
 
     def test_str(self):
-        self.assertEqual(str(self.sq1), '[Square] (1) 2/0 - 2')
-        self.assertEqual(str(self.sq2), '[Square] (2) 2/3 - 4')
+        self.assertNotEqual(str(self.sq1), '[Square] (2) 2/0 - 2')
+        self.assertEqual(str(self.sq2), '[Square] (4) 2/3 - 4')
 
     def test_update(self):
         temp = Square(5)

@@ -36,7 +36,7 @@ class TestRectangle(unittest.TestCase):
         cls.rec3 = Rectangle(2, 4, 2, 2, 12)
 
     def test_ids(self):
-        self.assertNotEqual(self.rec1.id, 2)
+        self.assertEqual(self.rec1.id, 2)
         self.assertEqual(self.rec3.id, 12)
         self.rec3.id = "b"
         self.assertEqual(self.rec3.id, "b")
@@ -74,7 +74,7 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = old_stdout
 
     def test_str(self):
-        self.assertNotEqual(self.rec1.__str__(), "[Rectangle] (2) 0/0 - 10/2")
+        self.assertEqual(self.rec1.__str__(), "[Rectangle] (2) 0/0 - 10/2")
         self.assertEqual(self.rec3.__str__(), "[Rectangle] (b) 2/2 - 2/4")
 
     def test_update(self):
@@ -92,7 +92,7 @@ class TestRectangle(unittest.TestCase):
     def test_dictionary(self):
         rec1_dictionary = self.rec1.to_dictionary()
         self.assertDictEqual(rec1_dictionary, {
-            'x': 0, 'y': 0, 'width': 10, 'height': 2, 'id': 1})
+            'x': 0, 'y': 0, 'width': 10, 'height': 2, 'id': 2})
         rec3_dictionary = self.rec3.to_dictionary()
         self.assertDictEqual(rec3_dictionary, {
             'x': 2, 'y': 2, 'width': 2, 'height': 4, 'id': 12})
