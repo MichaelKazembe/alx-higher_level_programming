@@ -106,22 +106,6 @@ class Base:
                 file.write(json_string)
 
     @classmethod
-    def load_from_file_csv(cls):
-        """ Load instances from CSV file """
-        mylist = []
-        filename = cls.__name__ + ".csv"
-        try:
-            with open(filename, 'r') as f:
-                reader = csv.DictReader(f)
-                for row in reader:
-                    for key, value in row.items():
-                        row[key] = int(value)
-                    my_list.append(row)
-            return ([cls.create(**x) for x in mylist])
-        except FileNotFoundError:
-            return ([[]])
-
-    @classmethod
     def save_to_file_csv(cls, list_objs):
         """ Save instances to file as CSV """
         if cls.__name__ is "Rectangle":
@@ -135,10 +119,26 @@ class Base:
             if list_objs:
                 writer = csv.DictWriter(f, fieldnames=names)
                 writer.writeheader()
-                for x in list_objs:
-                    writer.writerow(x.to_dictionary())
+                for _ in list_objs:
+                    writer.writerow(_.to_dictionary())
             else:
                 writer.writerow([[]])
+
+        @classmethod
+        def load_from_file_csv(cls):
+            """ Load instances from CSV file """
+            mylist = []
+            filename = cls.__name__ + ".csv"
+            try:
+                with open(filename, 'r') as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        for key, value in row.items():
+                            row[key] = int(value)
+                        mylist.append(row)
+                return ([cls.create(**x) for x in mylist])
+            except FileNotFoundError:
+                return ([[]])
 
         @staticmethod
         def draw(list_rectangles, list_squares):
