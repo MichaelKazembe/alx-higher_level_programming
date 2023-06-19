@@ -3,6 +3,7 @@
 
 import os
 import json
+import csv
 
 
 class Base:
@@ -34,6 +35,38 @@ class Base:
         else:
             return json.loads(json_string)
 
+    @staticmethod
+    def to_csv_string(list_objects):
+        """ Convert list of objects to CSV string """
+        if list_objects is None or len(list_objects) == 0:
+            return ""
+        class_name = list_objects[0].__class__.__name__
+        field_names = Base.get_field_names(class_name)
+        rows = [field_names]
+        for obj in list_objects:
+            obj_data = [str(getattr(obj, field_name))
+                        for field_name in field_names]
+            rows.append(obj_data)
+        csv_string = ""
+        for row in rows:
+            csv_string += ",".join(row) + "\n"
+        return csv_string
+
+    @staticmethod
+    def from_csv_string(csv_string):
+        """ Convert CSV string to list of dictionaries """
+        if csv_string is None or len(csv_string) == 0:
+            return []
+        rows = csv_string.strip().split("\n")
+        field_names = rows[0].split(",")
+        dictionaries = []
+        for row in rows[1:]:
+            values = row.split(",")
+            dictionary = {field_name: value
+                          for field_name, value in zip(field_names, values)}
+            dictionaries.append(dictionary)
+        return dictionaries
+
     @classmethod
     def create(cls, **dictionary):
         """ Create instance with attributes from dictionary """
@@ -56,5 +89,37 @@ class Base:
             json_string = file.read()
             dictionaries = cls.from_json_string(json_string)
             instances = [cls.create(**dictionary)
-                    for dictionary in dictionaries]
+                         for dictionary in dictionaries]
             return instances
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """ Save instances to file as JSON """
+        filename = cls.__name__ + ".json"
+        with open(filename, "w") as file:
+            if list_objs is None or len(list_objs) == 0:
+                file.write("[]")
+            else:
+                dictionaries = [obj.to_dictionary() for obj in list_objs]
+                json_string = cls.to_json_string(dictionaries)
+                file.write(json_string)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ Load instances from CSV file """
+        filename = cls.__name__ + ".csv"
+        if not os.path.exists(filename):
+            return []
+
+    ...
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Save instances to file as CSV """
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w") as file:
+            if list_objs is None or len(list_objs) == 0:
+                file.write("")
+            else:
+                csv_string = cls.to_csv_string(list_objs)
+                file.write(csv_string)
