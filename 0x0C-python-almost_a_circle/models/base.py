@@ -4,6 +4,7 @@
 import os
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -123,3 +124,32 @@ class Base:
             else:
                 csv_string = cls.to_csv_string(list_objs)
                 file.write(csv_string)
+
+        @staticmethod
+        def draw(list_rectangles, list_squares):
+            """ Draw Rectangles and Squares using Turtle graphics module """
+            screen = turtle.Screen()
+            screen.bgcolor("white")
+            turtle.speed(0)
+
+            for rectangle in list_rectangles:
+                turtle.penup()
+                turtle.goto(rectangle.x, rectangle.y)
+                turtle.pendown()
+                turtle.color("red")
+                for _ in range(2):
+                    turtle.forward(rectangle.width)
+                    turtle.right(90)
+                    turtle.forward(rectangle.height)
+                    turtle.right(90)
+
+            for square in list_squares:
+                turtle.penup()
+                turtle.goto(square.x, square.y)
+                turtle.pendown()
+                turtle.color("blue")
+                for _ in range(4):
+                    turtle.forward(square.size)
+                    turtle.right(90)
+
+            turtle.done()
