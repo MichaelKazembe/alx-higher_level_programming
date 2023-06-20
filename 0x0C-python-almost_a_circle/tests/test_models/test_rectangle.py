@@ -101,5 +101,6 @@ class TestRectangle(unittest.TestCase):
         dict = self.rec1.to_dictionary()
         self.assertIsInstance(Base.to_json_string(dict), str)
 
+
 if __name__ == '__main__':
     unittest.main()

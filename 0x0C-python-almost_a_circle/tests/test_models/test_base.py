@@ -111,5 +111,6 @@ class TestBase(unittest.TestCase):
         with open("Rectangle.json", mode="r") as my_File:
             self.assertNotEqual([], json.load(my_File))
 
+
 if __name__ == "__main__":
     unittest.main()

@@ -89,5 +89,6 @@ class TestSquare(unittest.TestCase):
         self.assertDictEqual(rec1_dictionary, {
             'x': 0, 'y': 0, 'width': 1, 'height': 1, 'id': 1})
 
+
 if __name__ == '__main__':
     unittest.main()
