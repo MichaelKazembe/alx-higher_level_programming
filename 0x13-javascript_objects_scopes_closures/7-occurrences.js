@@ -4,13 +4,10 @@
 Function returns number of occurrences in a list
 */
 
-exports.nbOccurrences = function (list, searchElement) {
+exports.nbOccurences = function (list, searchElement) {
   let count = 0;
-
-  for (let j = 0; j < list.length; j++) {
-    if (list[j] === searchElement) {
-      count += 1;
-    }
-  }
+  list.forEach((occurence) => {
+    if (occurence === searchElement) count++;
+  });
   return count;
 };
