@@ -4,7 +4,6 @@
 Function returns number of occurrences in a list
 */
 
-'use strict';
 exports.nbOccurrences = function (list, searchElement) {
   let occurrences = 0;
 
