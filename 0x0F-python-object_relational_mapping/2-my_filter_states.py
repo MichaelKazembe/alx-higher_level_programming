@@ -24,11 +24,12 @@ if __name__ == "__main__":
     state_name = sys.argv[4]
 
     # Use format to create the SQL query with user input
-    query = "SELECT * FROM states WHERE name = %s ORDER BY states.id"
+    query = "SELECT * FROM states WHERE name = %s"
     cursor.execute(query, (state_name,))
 
     for row in cursor.fetchall():
-        print(row)
+        if row[1] == state_name:
+            print(row)
 
     cursor.close()
     myDataBase.close()
