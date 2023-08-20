@@ -22,7 +22,8 @@ if __name__ == "__main__":
     cursor = myDataBase.cursor()
 
     # Modify the query to filter states with names starting with "N"
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id")
+    cursor.execute(
+            "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id")
 
     for row in cursor.fetchall():
         print(row)
