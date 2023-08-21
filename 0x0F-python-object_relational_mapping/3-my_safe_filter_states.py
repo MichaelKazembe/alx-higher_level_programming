@@ -24,7 +24,7 @@ if __name__ == "__main__":
     state_name = sys.argv[4]
 
     # Use parameterized query to prevent SQL injection
-    query = "SELECT * FROM states WHERE name = %s"
+    query = "SELECT * FROM states WHERE name = %s ORDER BY states.id"
     cursor.execute(query, (state_name,))
 
     for row in cursor.fetchall():
