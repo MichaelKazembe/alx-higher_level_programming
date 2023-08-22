@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Script that lists all State objects that contain the letter 'a' from the database hbtn_0e_6_usa.
+Script that lists all State objects that contain the letter 'a'
+from the database hbtn_0e_6_usa.
 """
 
 import sys
@@ -17,7 +18,8 @@ if __name__ == "__main__":
     db = sys.argv[3]
 
     # Create an engine
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}".format(user, passwd, db))
+    URL = "mysql+mysqldb://{}:{}@localhost:3306/{}"
+    engine = create_engine(URL.format(user, passwd, db))
     Base.metadata.create_all(engine)
 
     # Create a session
@@ -25,10 +27,14 @@ if __name__ == "__main__":
     session = Session()
 
     # Fetch all State objects containing the letter 'a'
-    states_with_a = session.query(State).filter(State.name.like('%a%')).order_by(State.id).asc()
+    query_state = session.query(State).filter(State.name.like("%a%"))
 
+    # Add to query results
+    states_with_a = query_state.order_by(State.id.asc()).all()
 
     for state in states_with_a:
         print("{}: {}".format(state.id, state.name))
 
+    # Cleanup
+    session.commit()
     session.close()
