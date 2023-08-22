@@ -5,11 +5,11 @@ Script that prints all City objects from the database hbtn_0e_14_usa.
 
 import sys
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, relationship
 from model_state import Base, State
 from model_city import City
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     if len(sys.argv) != 4:
         raise Exception("Need 3 arguments!")
 
@@ -20,18 +20,18 @@ if __name__ == "__main__":
     # Create an engine
     URL = "mysql+mysqldb://{}:{}@localhost:3306/{}"
     engine = create_engine(URL.format(user, passwd, db))
-    # Create a custom session object class from the database engine
-    Session = sessionmaker(bind=engine)
 
-    # Create an instance of the new custom session class
-    session = Session()
+    # Set up the relationship between State and City
+    State.cities = relationship('City', back_populates='state')
+    # Create the database tables
+    Base.metadata.create_all(engine)
+    # Create a session
+    session = sessionmaker(bind=engine)()
 
-    # Fetch all City objects and display them by state
-    results = session.query(State.name, City.id, City.name)\
-        .join(City, City.state_id == State.id).order_by(City.id)
-
-    for result in results:
-        print("{}: ({}) {}".format(result[0], result[1], result[2]))
+    # Query and print City objects
+    result = session.query(City).order_by(City.id.asc()).all()
+    for row in result:
+        print('{}: ({}) {}'.format(row.state.name, row.id, row.name))
 
     # Close the session
     session.close()
