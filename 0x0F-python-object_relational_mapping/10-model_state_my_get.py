@@ -26,8 +26,8 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).filter(State.name == search_name).order_by(State.id)
-    
+    states = session.query(State).filter(State.name == search_name)\
+        .order_by(State.id)
     if states is not None and states.count() > 0:
         for state in states:
             print('{}'.format(state.id))
