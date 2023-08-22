@@ -19,9 +19,9 @@ if __name__ == "__main__":
     )
 
     cursor = myDataBase.cursor()
-    query = "SELECT cities.id, cities.name, states.name FROM states \
-           LEFT JOIN cities ON states.id = state_id \
-           ORDER BY cities.id"
+    query = "SELECT cities.id, cities.name, states.name FROM cities \
+             JOIN states ON cities.state_id = states.id \
+             ORDER BY cities.id ASC"
 
     # Use execute() once to fetch all cities and sort by cities.id
     cursor.execute(query)
