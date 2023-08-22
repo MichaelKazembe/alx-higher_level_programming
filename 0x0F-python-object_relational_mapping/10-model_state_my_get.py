@@ -21,16 +21,17 @@ if __name__ == "__main__":
     # Create an engine
     URL = "mysql+mysqldb://{}:{}@localhost:3306/{}"
     engine = create_engine(URL.format(user, passwd, db))
+    Base.metadata.create_all(engine)
 
     # Create a session
     Session = sessionmaker(bind=engine)
     session = Session()
 
     # Fetch the State object with the given name
-    state = session.query(State).filter_by(name=search_name).first()
+    state = session.query(State).filter(State.name == search_name).first()
 
     if state:
-        print(state.id)
+        print("{}".format(state.id))
     else:
         print("Not found")
 
