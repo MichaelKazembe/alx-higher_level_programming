@@ -1,4 +1,6 @@
 #!/bin/bash
-# displays the size of the body of the response(Content-length)
+# takes in a URL, sends a GET request to the URL
+# displays the body of the response
 
-curl -sI "$1" | grep -i Content-Length | awk '{print $2}'
+url="$1"
+curl -sI "$url" | grep -i 'Content-Length' | awk '{print $2}'
