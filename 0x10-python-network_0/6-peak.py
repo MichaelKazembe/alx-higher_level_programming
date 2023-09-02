@@ -2,18 +2,21 @@
 """ find peak of unsorted list of integers """
 
 
+def search(low, high, ints):
+
+    mid = (low + high) // 2
+
+    if low == high:
+        return ints[high]
+    if ints[mid] < ints[mid + 1]:
+        return(search(mid + 1, high, ints))
+
+    return(search(low, mid, ints))
+
+
 def find_peak(list_of_integers):
+
     if not list_of_integers:
-        return None
+        return
 
-    left, right = 0, len(list_of_integers) - 1
-
-    while left < right:
-        mid = (left + right) // 2
-
-        if list_of_integers[mid] > list_of_integers[mid + 1]:
-            right = mid
-        else:
-            left = mid + 1
-
-    return list_of_integers[left]
+    return(search(0, len(list_of_integers) - 1, list_of_integers))
