@@ -1,29 +1,31 @@
 #!/usr/bin/node
 /*
-Computes the number of tasks completed by user ID.
+Script that computes the number of tasks completed by user ID.
 */
 
 const request = require('request');
 
-const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+const apiUrl = process.argv[2];
 
 request(apiUrl, (err, response, body) => {
   if (err) {
     console.error(err);
   } else {
-    const todos = JSON.parse(body);
-    const userTasks = {};
+    const taskResults = {};
+    const tasksData = JSON.parse(body);
 
-    todos.forEach((task) => {
-      if (task.completed) {
-        if (userTasks[task.userId]) {
-          userTasks[task.userId]++;
+    for (let i = 0; i < tasksData.length; i++) {
+      const task = tasksData[i];
+
+      if (task.completed === true) {
+        if (taskResults[task.userId] !== undefined) {
+          taskResults[task.userId] += 1;
         } else {
-          userTasks[task.userId] = 1;
+          taskResults[task.userId] = 1;
         }
       }
-    });
+    }
 
-    console.log(userTasks);
+    console.log(taskResults);
   }
 });

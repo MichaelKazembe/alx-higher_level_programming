@@ -17,7 +17,7 @@ request(apiUrl, (err, response, body) => {
   }
 });
 
-function printCharacters(urls, index) {
+function printCharacters (urls, index) {
   if (!urls || index >= urls.length) {
     return;
   }
